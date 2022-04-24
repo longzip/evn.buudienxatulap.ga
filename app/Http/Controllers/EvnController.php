@@ -35,8 +35,19 @@ class EvnController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return $request;
+        $evn = Evn::firstOrNew([
+            'ma' => $request->ma;
+        ]);
+
+        $evn->ten = $request->ten;
+        $evn->diaChi = $request->diaChi;
+        $evn->soDienThoai = $request->soDienThoai;
+        $evn->soTien = $request->soTien;
+        $evn->ghiChu = $request->ghiChu;
+        // if(isset($request->completed))
+        // $evn->completed = $request->completed;
+        $evn->save();
+        return $evn;
     }
 
     /**
@@ -72,7 +83,7 @@ class EvnController extends Controller
     {
         //
         $evn = Evn::firstOrNew([
-            'maSoBhxh' => $id
+            'ma' => $id
         ]);
 
         $evn->ten = $request->ten;
