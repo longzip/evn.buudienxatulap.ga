@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEvnRequest;
-use App\Http\Requests\UpdateEvnRequest;
+use Illuminate\Http\Request;
 use App\Models\Evn;
 
 class EvnController extends Controller
@@ -13,9 +12,9 @@ class EvnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Bhyt::filter($request->all())->orderByDesc('updated_at')->take(500)->get();
+        return Evn::filter($request->all())->orderByDesc('updated_at')->take(500)->get();
     }
 
     /**
@@ -34,7 +33,7 @@ class EvnController extends Controller
      * @param  \App\Http\Requests\StoreEvnRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEvnRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -68,10 +67,10 @@ class EvnController extends Controller
      * @param  \App\Models\Evn  $evn
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEvnRequest $request, Evn $evn)
+    public function update(Request $request, Evn $evn)
     {
         //
-        $evn = Bhyt::firstOrNew([
+        $evn = Evn::firstOrNew([
             'maSoBhxh' => $id
         ]);
 
