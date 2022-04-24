@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EvnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('evns', EvnController::class);
+
+Route::put('/evns/{evn}/completed', [EvnController::class, 'setCompleted']);
+Route::put('/evns/{evn}/disabled', [EvnController::class, 'setDisabled']);
