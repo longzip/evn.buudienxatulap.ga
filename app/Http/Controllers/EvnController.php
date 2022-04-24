@@ -36,7 +36,7 @@ class EvnController extends Controller
     public function store(Request $request)
     {
         $evn = Evn::firstOrNew([
-            'ma' => $request->ma;
+            'ma' => $request->ma
         ]);
 
         $evn->ten = $request->ten;
