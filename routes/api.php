@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvnController;
+use App\Http\Controllers\KhlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('evns', EvnController::class);
+Route::resource('khl', KhlController::class);
 
 Route::put('/evns/{evn}/completed', [EvnController::class, 'setCompleted']);
 Route::put('/evns/{evn}/disabled', [EvnController::class, 'setDisabled']);
